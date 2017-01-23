@@ -1,0 +1,58 @@
+#include <iostream>
+
+using namespace std;
+
+string regularPolindrome(string polindrome)
+{
+    string regular;
+    for(int i =1; i <= polindrome.length(); i++)
+    {
+        regular.push_back(polindrome[polindrome.length() - i]);
+    }
+    return regular;
+}
+string CtoR(string o)
+{
+    for(int i = 0; i < o.length(); i++) //
+    {
+        string t = "AAB C D E3F G HHIIJLK LJMMN OOP Q R S2TTUUVVWWXXYYZ5112S3E4 5Z6 7 889 ";
+        for(int j =0; j < t.length(); j +=2)
+        {
+            if(o[i] == t[j])
+            {
+                o[i] = t[j+1];
+                break;
+            }
+        }
+    }
+    return o;
+}
+int main()
+{
+    string napis = "";
+    string z = "";
+
+    while(cin >> z)
+    {
+        napis += z;
+
+
+    if(regularPolindrome(napis) == napis && napis != regularPolindrome(CtoR(napis)))
+    {
+        cout << napis << " -- is a regular palindrome." << endl<< endl;
+    }
+    else if(napis == regularPolindrome(CtoR(napis)) && regularPolindrome(napis) != napis)
+    {
+        cout << napis << " -- is a mirrored string." << endl<< endl;
+    }
+    else if(regularPolindrome(napis) == napis && napis == regularPolindrome(CtoR(napis)))
+    {
+        cout << napis << " -- is a mirrored palindrome." << endl<< endl;
+    }
+    else
+        cout << napis << " -- is not a palindrome." << endl<< endl;
+
+    napis = "";
+    }
+    return 0;
+}
